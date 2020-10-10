@@ -1,4 +1,4 @@
-﻿namespace Board
+﻿namespace board
 {
     class Position
     {
