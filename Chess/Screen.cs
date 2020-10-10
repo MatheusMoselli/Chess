@@ -14,7 +14,7 @@ namespace Chess
                 {
                     if (board.UniquePiece(i, j) == null)
                     {
-                        Console.Write("- ");
+                        Console.Write("-");
                     }
                     Console.Write(board.UniquePiece(i, j) + " ");
                 }

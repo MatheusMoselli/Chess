@@ -23,10 +23,43 @@
             return Piece[line, column];
         }
 
+        public Piece UniquePiece(Position pos)
+        {
+            return Piece[pos.Line, pos.Column];
+        }
+
+        public bool IsTherePiece(Position pos)
+        {
+            ValidatePosition(pos);
+            return UniquePiece(pos) != null;
+        }
+
         public void PutPiece(Piece p, Position pos)
         {
+            if (IsTherePiece(pos))
+            {
+                throw new BoardException("[ERROR] Already existis a piece on this position");
+            }
             Piece[pos.Line, pos.Column] = p;
             p.Position = pos;
+        }
+
+        public bool IsPositionValid(Position pos)
+        {
+            if (pos.Line < 0 || pos.Line > Lines || pos.Column < 0 || pos.Column > Columns)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public void ValidatePosition(Position pos)
+        {
+            if (!IsPositionValid(pos))
+            {
+                throw new BoardException("[ERROR] Invalid Position");
+            }
         }
     }
 }
