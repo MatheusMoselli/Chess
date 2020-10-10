@@ -1,5 +1,4 @@
 ﻿using board;
-using Microsoft.VisualBasic;
 using System;
 
 namespace Chess
@@ -8,17 +7,37 @@ namespace Chess
     {
         public static void PrintBoard(Board board)
         {
-            for(int i = 0; i < board.Lines; i++)
+            for (int i = 0; i < board.Lines; i++)
             {
-                for(int j = 0; j < board.Columns; j++)
+                Console.Write(8 - i + " ");
+                for (int j = 0; j < board.Columns; j++)
                 {
                     if (board.UniquePiece(i, j) == null)
                     {
-                        Console.Write("-");
+                        Console.Write("- ");
+                    } else
+                    {
+                        PrintPiece(board.UniquePiece(i, j));
+                        Console.Write(" ");
                     }
-                    Console.Write(board.UniquePiece(i, j) + " ");
                 }
                 Console.WriteLine();
+            }
+            Console.WriteLine("  A B C D E F G H");
+        }
+
+        public static void PrintPiece(Piece piece)
+        {
+            if (piece.Color == Color.White)
+            {
+                Console.Write(piece);
+            }
+            else
+            {
+                ConsoleColor aux = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(piece);
+                Console.ForegroundColor = aux;
             }
         }
     }

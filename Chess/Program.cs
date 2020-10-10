@@ -8,11 +8,21 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            ChessPosition pos = new ChessPosition('c', 7);
+            try
+            {
+                Board board = new Board(8, 8);
 
-            Console.WriteLine(pos);
+                board.PutPiece(new Tower(Color.Black, board), new Position(0, 0));
+                board.PutPiece(new Tower(Color.Black, board), new Position(5, 2));
+                board.PutPiece(new King(Color.White, board), new Position(3, 4));
+                board.PutPiece(new King(Color.White, board), new Position(0, 7));
 
-            Console.WriteLine(pos.ToPosition());
+                Screen.PrintBoard(board);
+            }
+            catch(BoardException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
