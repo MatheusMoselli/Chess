@@ -21,5 +21,10 @@ namespace board
             Board = board;
             ManyMoves = 0;
         }
+
+        public void IncrementManyMoves()
+        {
+            ManyMoves++;
+        }
     }
 }
