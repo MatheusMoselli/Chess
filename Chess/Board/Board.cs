@@ -22,5 +22,11 @@
         {
             return Piece[line, column];
         }
+
+        public void PutPiece(Piece p, Position pos)
+        {
+            Piece[pos.Line, pos.Column] = p;
+            p.Position = pos;
+        }
     }
 }
