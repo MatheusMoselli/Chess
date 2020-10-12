@@ -18,12 +18,12 @@ namespace Chess
             Console.WriteLine();
 
             Console.WriteLine("Turn: " + match.Turn);
+            Console.WriteLine("Waiting For: " + match.ActualPlayer);
 
             if (!match.Ended)
             {
                 if (match.Check)
                 {
-                    Console.WriteLine("Waiting For: " + match.ActualPlayer);
                     Console.WriteLine(match.ActualPlayer + ": You are under Check!");
                 }
             } else
