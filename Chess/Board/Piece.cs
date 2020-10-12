@@ -24,6 +24,11 @@
         {
             ManyMoves++;
         }
+
+        public void DecrementManyMoves()
+        {
+            ManyMoves--;
+        }
         
         public bool IsTherePossibleMoves()
         {

@@ -20,6 +20,11 @@ namespace Chess
             Console.WriteLine("Turn: " + match.Turn);
             Console.WriteLine("Waiting For: " + match.ActualPlayer);
 
+            if (match.Check)
+            {
+                Console.WriteLine("You are under Check!");
+            }
+
         }
 
         public static void PrintTakenPieces(ChessMatch match)
