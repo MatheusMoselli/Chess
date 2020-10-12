@@ -18,13 +18,19 @@ namespace Chess
             Console.WriteLine();
 
             Console.WriteLine("Turn: " + match.Turn);
-            Console.WriteLine("Waiting For: " + match.ActualPlayer);
 
-            if (match.Check)
+            if (!match.Ended)
             {
-                Console.WriteLine("You are under Check!");
+                if (match.Check)
+                {
+                    Console.WriteLine("Waiting For: " + match.ActualPlayer);
+                    Console.WriteLine(match.ActualPlayer + ": You are under Check!");
+                }
+            } else
+            {
+                Console.WriteLine("Checkmate!");
+                Console.WriteLine("Winner: " + match.ActualPlayer);
             }
-
         }
 
         public static void PrintTakenPieces(ChessMatch match)
