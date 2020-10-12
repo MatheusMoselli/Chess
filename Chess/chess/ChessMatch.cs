@@ -28,10 +28,21 @@ namespace chess
 
         private void PutPieces()
         {
-            BoardOfMatch.PutPiece(new Tower(Color.Black, BoardOfMatch), new ChessPosition('c', 1).ToPosition());
-            BoardOfMatch.PutPiece(new Tower(Color.Black, BoardOfMatch), new ChessPosition('a', 5).ToPosition());
-            BoardOfMatch.PutPiece(new King(Color.White, BoardOfMatch), new ChessPosition('f', 3).ToPosition());
-            BoardOfMatch.PutPiece(new King(Color.White, BoardOfMatch), new ChessPosition('h', 5).ToPosition());
+            BoardOfMatch.PutPiece(new Tower(Color.White, BoardOfMatch), new ChessPosition('c', 1).ToPosition());
+            BoardOfMatch.PutPiece(new Tower(Color.White, BoardOfMatch), new ChessPosition('c', 2).ToPosition());
+            BoardOfMatch.PutPiece(new Tower(Color.White, BoardOfMatch), new ChessPosition('d', 2).ToPosition());
+            BoardOfMatch.PutPiece(new Tower(Color.White, BoardOfMatch), new ChessPosition('e', 1).ToPosition());
+            BoardOfMatch.PutPiece(new Tower(Color.White, BoardOfMatch), new ChessPosition('e', 2).ToPosition());
+
+            BoardOfMatch.PutPiece(new King(Color.White, BoardOfMatch), new ChessPosition('d', 1).ToPosition());
+
+            BoardOfMatch.PutPiece(new Tower(Color.Black, BoardOfMatch), new ChessPosition('c', 8).ToPosition());
+            BoardOfMatch.PutPiece(new Tower(Color.Black, BoardOfMatch), new ChessPosition('c', 7).ToPosition());
+            BoardOfMatch.PutPiece(new Tower(Color.Black, BoardOfMatch), new ChessPosition('d', 7).ToPosition());
+            BoardOfMatch.PutPiece(new Tower(Color.Black, BoardOfMatch), new ChessPosition('e', 8).ToPosition());
+            BoardOfMatch.PutPiece(new Tower(Color.Black, BoardOfMatch), new ChessPosition('e', 7).ToPosition());
+
+            BoardOfMatch.PutPiece(new King(Color.Black, BoardOfMatch), new ChessPosition('d', 8).ToPosition());
         }
     }
 }

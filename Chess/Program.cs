@@ -22,6 +22,12 @@ namespace Chess
                     Console.Write("Origin: ");
                     Position origin = Screen.ReadChessPosition().ToPosition();
 
+                    bool[,] possiblePositions = match.BoardOfMatch.UniquePiece(origin).PossibleMoviments();
+
+                    Console.Clear();
+                    Screen.PrintBoard(match.BoardOfMatch, possiblePositions);
+
+                    Console.WriteLine();
                     Console.Write("Destiny: ");
                     Position destiny = Screen.ReadChessPosition().ToPosition();
 
@@ -32,6 +38,8 @@ namespace Chess
             {
                 Console.WriteLine(e.Message);
             }
+
+            Console.ReadLine();
         }
     }
 }

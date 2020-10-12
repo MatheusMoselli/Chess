@@ -9,8 +9,8 @@ namespace chess
 
         public ChessPosition(char column, int line)
         {
-            this.Column = column;
-            this.Line = line;
+            Column = column;
+            Line = line;
         }
 
         public Position ToPosition()
@@ -20,7 +20,7 @@ namespace chess
 
         public override string ToString()
         {
-            return " " + Column + Line;
+            return "" + Column + Line;
         }
     }
 }
