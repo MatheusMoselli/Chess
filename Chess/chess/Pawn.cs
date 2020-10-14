@@ -1,11 +1,15 @@
 ﻿using board;
+using System.Linq.Expressions;
 
 namespace chess
 {
     class Pawn : Piece
     {
-        public Pawn(Color color, Board board) : base(color, board)
+        private ChessMatch Match;
+
+        public Pawn(Color color, Board board, ChessMatch match) : base(color, board)
         {
+            Match = match;
         }
 
         public override string ToString()
@@ -55,6 +59,22 @@ namespace chess
                 {
                     mat[pos.Line, pos.Column] = true;
                 }
+
+                // #SpecialPlay
+                // EnPassant
+                if (Position.Line == 3)
+                {
+                    Position left = new Position(Position.Line, Position.Column - 1);
+                    if (Board.IsPositionValid(left) && IsThereEnemy(left) && Board.UniquePiece(left) == Match.VulnerableEnPassant)
+                    {
+                        mat[left.Line - 1, left.Column] = true;
+                    }
+                    Position right = new Position(Position.Line, Position.Column + 1);
+                    if (Board.IsPositionValid(right) && IsThereEnemy(right) && Board.UniquePiece(right) == Match.VulnerableEnPassant)
+                    {
+                        mat[right.Line - 1, right.Column] = true;
+                    }
+                }
             }
             else
             {
@@ -82,6 +102,23 @@ namespace chess
                 {
                     mat[pos.Line, pos.Column] = true;
                 }
+
+                // #SpecialPlay
+                // EnPassant
+                if (Position.Line == 4)
+                {
+                    Position left = new Position(Position.Line, Position.Column - 1);
+                    if (Board.IsPositionValid(left) && IsThereEnemy(left) && Board.UniquePiece(left) == Match.VulnerableEnPassant)
+                    {
+                        mat[left.Line + 1, left.Column] = true;
+                    }
+                    Position right = new Position(Position.Line, Position.Column + 1);
+                    if (Board.IsPositionValid(right) && IsThereEnemy(right) && Board.UniquePiece(right) == Match.VulnerableEnPassant)
+                    {
+                        mat[right.Line + 1, right.Column] = true;
+                    }
+                }
+
             }
             return mat;
         }
