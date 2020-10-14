@@ -4,8 +4,11 @@ namespace chess
 {
     class King : Piece
     {
-        public King(Color color, Board board) : base(color, board)
+        private ChessMatch Match;
+
+        public King(Color color, Board board, ChessMatch match) : base(color, board)
         {
+            Match = match;
         }
 
         public override string ToString()
@@ -17,6 +20,12 @@ namespace chess
         {
             Piece p = Board.UniquePiece(pos);
             return p == null || p.Color != Color;
+        }
+
+        private bool testRookToCastle(Position pos)
+        {
+            Piece p = Board.UniquePiece(pos);
+            return p != null && p is Rook && p.Color == Color && ManyMoves == 0;
         }
 
         public override bool[,] PossibleMoviments()
@@ -80,6 +89,44 @@ namespace chess
             {
                 mat[pos.Line, pos.Column] = true;
             }
+
+            // #SpecialPlay
+            if (ManyMoves == 0 && !Match.Check)
+            {
+                // Castle Kingside - roque pequeno
+                Position positionOfRook = new Position(Position.Line, Position.Column + 3);
+                if(testRookToCastle(positionOfRook))
+                {
+                    Position p1 = new Position(Position.Line, Position.Column + 1);
+                    Position p2 = new Position(Position.Line, Position.Column + 2);
+
+                    if (Board.UniquePiece(p1) == null && Board.UniquePiece(p2) == null)
+                    {
+                        mat[Position.Line, Position.Column + 2] = true;
+                    }
+                    {
+
+                    }
+                }
+
+                // Castle Queenside - roque grande
+                Position positionOfRookQueenSide = new Position(Position.Line, Position.Column - 4);
+                if (testRookToCastle(positionOfRookQueenSide))
+                {
+                    Position p1 = new Position(Position.Line, Position.Column - 1);
+                    Position p2 = new Position(Position.Line, Position.Column - 2);
+                    Position p3 = new Position(Position.Line, Position.Column - 3);
+
+                    if (Board.UniquePiece(p1) == null && Board.UniquePiece(p2) == null && Board.UniquePiece(p3) == null)
+                    {
+                        mat[Position.Line, Position.Column - 2] = true;
+                    }
+                    {
+
+                    }
+                }
+            }
+
             return mat;
         }
     }
