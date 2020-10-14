@@ -1,5 +1,4 @@
-﻿
-using board;
+﻿using board;
 using System.Collections.Generic;
 
 namespace chess
@@ -224,12 +223,39 @@ namespace chess
 
         private void PutPieces()
         {
-            PutNewPiece('c', 1, new Tower(Color.White, BoardOfMatch));
-            PutNewPiece('d', 1, new King(Color.White, BoardOfMatch));
-            PutNewPiece('h', 7, new Tower(Color.White, BoardOfMatch));
+            PutNewPiece('a', 1, new Rook(Color.White, BoardOfMatch));
+            PutNewPiece('b', 1, new Horse(Color.White, BoardOfMatch));
+            PutNewPiece('c', 1, new Bishop(Color.White, BoardOfMatch));
+            PutNewPiece('d', 1, new Queen(Color.White, BoardOfMatch));
+            PutNewPiece('e', 1, new King(Color.White, BoardOfMatch));
+            PutNewPiece('f', 1, new Bishop(Color.White, BoardOfMatch));
+            PutNewPiece('g', 1, new Horse(Color.White, BoardOfMatch));
+            PutNewPiece('h', 1, new Rook(Color.White, BoardOfMatch));
+            PutNewPiece('a', 2, new Pawn(Color.White, BoardOfMatch));
+            PutNewPiece('b', 2, new Pawn(Color.White, BoardOfMatch));
+            PutNewPiece('c', 2, new Pawn(Color.White, BoardOfMatch));
+            PutNewPiece('d', 2, new Pawn(Color.White, BoardOfMatch));
+            PutNewPiece('e', 2, new Pawn(Color.White, BoardOfMatch));
+            PutNewPiece('f', 2, new Pawn(Color.White, BoardOfMatch));
+            PutNewPiece('g', 2, new Pawn(Color.White, BoardOfMatch));
+            PutNewPiece('h', 2, new Pawn(Color.White, BoardOfMatch));
 
-            PutNewPiece('a', 8, new King(Color.Black, BoardOfMatch));
-            PutNewPiece('b', 8, new Tower(Color.Black, BoardOfMatch));
+            PutNewPiece('a', 8, new Rook(Color.Black, BoardOfMatch));
+            PutNewPiece('b', 8, new Horse(Color.Black, BoardOfMatch));
+            PutNewPiece('c', 8, new Bishop(Color.Black, BoardOfMatch));
+            PutNewPiece('d', 8, new Queen(Color.Black, BoardOfMatch));
+            PutNewPiece('e', 8, new King(Color.Black, BoardOfMatch));
+            PutNewPiece('f', 8, new Bishop(Color.Black, BoardOfMatch));
+            PutNewPiece('g', 8, new Horse(Color.Black, BoardOfMatch));
+            PutNewPiece('h', 8, new Rook(Color.Black, BoardOfMatch));
+            PutNewPiece('a', 7, new Pawn(Color.Black, BoardOfMatch));
+            PutNewPiece('b', 7, new Pawn(Color.Black, BoardOfMatch));
+            PutNewPiece('c', 7, new Pawn(Color.Black, BoardOfMatch));
+            PutNewPiece('d', 7, new Pawn(Color.Black, BoardOfMatch));
+            PutNewPiece('e', 7, new Pawn(Color.Black, BoardOfMatch));
+            PutNewPiece('f', 7, new Pawn(Color.Black, BoardOfMatch));
+            PutNewPiece('g', 7, new Pawn(Color.Black, BoardOfMatch));
+            PutNewPiece('h', 7, new Pawn(Color.Black, BoardOfMatch));
         }
     }
 }
