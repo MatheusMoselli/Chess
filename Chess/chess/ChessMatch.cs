@@ -147,6 +147,24 @@ namespace chess
                 UndoMoviment(origin, destiny, takenPiece);
                 throw new BoardException("[ERROR] Can't put yourself in check");
             }
+
+            Piece p = BoardOfMatch.UniquePiece(destiny);
+
+            // #SpecialPlay upgrade
+            if (p is Pawn)
+            {
+                if((p.Color == Color.White && destiny.Line == 0) || (p.Color == Color.Black && destiny.Line == 7))
+                {
+                    p = BoardOfMatch.RemovePiece(destiny);
+                    Pieces.Remove(p);
+
+                    Piece queen = new Queen(p.Color, BoardOfMatch);
+                    BoardOfMatch.PutPiece(queen, destiny);
+
+                    Pieces.Add(queen);
+                }
+            }
+
             if (IsTheKingInCheck(AdversaryColor(ActualPlayer))) {
                 Check = true;
             } else
@@ -162,8 +180,6 @@ namespace chess
                 Turn++;
                 ChangePlayer();
             }
-
-            Piece p = BoardOfMatch.UniquePiece(destiny);
 
             // #SpecialPlay
             // EnPassant
